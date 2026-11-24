@@ -1,0 +1,110 @@
+=== port ===
+  port dir: /sys/bus/usb/devices/1-0:1.0/usb1-port9
+  disable=1 state=not attached
+  re-enabling port
+  device: /sys/bus/usb/devices/1-9
+=== services ===
+  
+  
+  
+=== probe (before) ===
+  rom_info                     len=38    status=0000 head=0000f0b05e54a400000006070130
+  query19                      len=68    status=0000 head=0000000301020001000000000000
+  flash_info                   len=148   status=0000 head=0000ef0040000010010000010100
+  flash jedec=00ef:0040 size=1048576 partitions=11
+    id=1  type=4  access=7  off=0x001000 size=0x001000
+    id=2  type=1  access=2  off=0x002000 size=0x03e000
+    id=5  type=5  access=3  off=0x040000 size=0x008000
+    id=6  type=6  access=3  off=0x048000 size=0x008000
+    id=4  type=3  access=5  off=0x050000 size=0x030000
+    id=228 type=79 access=32890 off=0x947713d6 size=0xd0b530d3
+    id=155 type=228 access=43963 off=0x8f383657 size=0x7a232785
+    id=245 type=238 access=42343 off=0x8a241ea7 size=0xff3a6b42
+    id=179 type=123 access=9186 off=0x811b7b31 size=0x284f367e
+    id=172 type=44 access=49160 off=0xfa43bf0a size=0xa8a52a5
+    id=66 type=201 access=55469 off=0xcc7cbd0b size=0x2b82141
+  fw_info p1                   len=2     status=04af head=af04
+  fw_info p2                   len=2     status=04af head=af04
+  fw_info p5                   len=2     status=04af head=af04
+  fw_info p6                   len=2     status=04af head=af04
+  fw_info p4                   len=2     status=04af head=af04
+  fw_info p228                 len=2     status=04af head=af04
+  fw_info p155                 len=2     status=04af head=af04
+  fw_info p245                 len=2     status=04af head=af04
+  fw_info p179                 len=2     status=04af head=af04
+  fw_info p172                 len=2     status=04af head=af04
+  fw_info p66                  len=2     status=04af head=af04
+  read p1                      len=2     status=04af head=af04
+  read p2                      len=2     status=04af head=af04
+  read p5                      len=2     status=04af head=af04
+  read p6                      len=2     status=04af head=af04
+  read p4                      len=2     status=04af head=af04
+  read p228                    len=2     status=04af head=af04
+  read p155                    len=2     status=04af head=af04
+  read p245                    len=2     status=04af head=af04
+  read p179                    len=2     status=04af head=af04
+  read p172                    len=2     status=04af head=af04
+  read p66                     len=2     status=04af head=af04
+  cert read                    len=2     status=04af head=af04
+=== sensor reboot (non-destructive) ===
+  reboot accepted
+  re-enumerated: /sys/bus/usb/devices/1-9
+=== probe (after reboot) ===
+  rom_info                     len=38    status=0000 head=0000f0b05e54a400000006070130
+  query19                      len=68    status=0000 head=0000000301020001000000000000
+  flash_info                   len=148   status=0000 head=0000ef0040000010010000010100
+  flash jedec=00ef:0040 size=1048576 partitions=11
+    id=1  type=4  access=7  off=0x001000 size=0x001000
+    id=2  type=1  access=2  off=0x002000 size=0x03e000
+    id=5  type=5  access=3  off=0x040000 size=0x008000
+    id=6  type=6  access=3  off=0x048000 size=0x008000
+    id=4  type=3  access=5  off=0x050000 size=0x030000
+    id=228 type=79 access=32890 off=0x947713d6 size=0xd0b530d3
+    id=155 type=228 access=43963 off=0x8f383657 size=0x7a232785
+    id=245 type=238 access=42343 off=0x8a241ea7 size=0xff3a6b42
+    id=179 type=123 access=9186 off=0x811b7b31 size=0x284f367e
+    id=172 type=44 access=49160 off=0xfa43bf0a size=0xa8a52a5
+    id=66 type=201 access=55469 off=0xcc7cbd0b size=0x2b82141
+  cert read                    len=2     status=04af head=af04
+  flash readable: False
+=== factory reset (destructive) ===
+  reset_blob                   len=2     status=0000 head=0000
+  commit                       len=2     status=0000 head=0000
+=== restart driver ===
+=== persistent hardening ===
+  wrote /etc/udev/rules.d/61-validity-no-autosuspend.rules
+  wrote /etc/systemd/system/python3-validity.service.d/restart-limit.conf
+  device: /sys/bus/usb/devices/1-9
+=== journal ===
+Nov 22 11:21:30 laptop dbus-service[155014]: Exception: Failed: 0315
+Nov 22 11:21:30 laptop systemd[1]: python3-validity.service: Main process exited, code=exited, status=1/FAILURE
+Nov 22 11:21:30 laptop systemd[1]: python3-validity.service: Failed with result 'exit-code'.
+Nov 22 11:21:35 laptop systemd[1]: python3-validity.service: Scheduled restart job, restart counter is at 2.
+Nov 22 11:21:35 laptop systemd[1]: Started python-validity driver dbus service.
+Nov 22 11:21:35 laptop python3[155025]: DEBUG:root:>cmd> 3e
+Nov 22 11:21:35 laptop python3[155025]: DEBUG:root:<cmd< 0104
+Nov 22 11:21:35 laptop dbus-service[155025]: Traceback (most recent call last):
+Nov 22 11:21:35 laptop dbus-service[155025]:   File "/usr/lib/python-validity/dbus-service", line 305, in <module>
+Nov 22 11:21:35 laptop dbus-service[155025]:     main()
+Nov 22 11:21:35 laptop dbus-service[155025]:     ~~~~^^
+Nov 22 11:21:35 laptop dbus-service[155025]:   File "/usr/lib/python-validity/dbus-service", line 262, in main
+Nov 22 11:21:35 laptop dbus-service[155025]:     init.open()
+Nov 22 11:21:35 laptop dbus-service[155025]:     ~~~~~~~~~^^
+Nov 22 11:21:35 laptop dbus-service[155025]:   File "/usr/lib/python3.14/site-packages/validitysensor/init.py", line 50, in open
+Nov 22 11:21:35 laptop dbus-service[155025]:     open_common()
+Nov 22 11:21:35 laptop dbus-service[155025]:     ~~~~~~~~~~~^^
+Nov 22 11:21:35 laptop dbus-service[155025]:   File "/usr/lib/python3.14/site-packages/validitysensor/init.py", line 31, in open_common
+Nov 22 11:21:35 laptop dbus-service[155025]:     init_flash()
+Nov 22 11:21:35 laptop dbus-service[155025]:     ~~~~~~~~~~^^
+Nov 22 11:21:35 laptop dbus-service[155025]:   File "/usr/lib/python3.14/site-packages/validitysensor/init_flash.py", line 122, in init_flash
+Nov 22 11:21:35 laptop dbus-service[155025]:     info = get_flash_info()
+Nov 22 11:21:35 laptop dbus-service[155025]:   File "/usr/lib/python3.14/site-packages/validitysensor/flash.py", line 41, in get_flash_info
+Nov 22 11:21:35 laptop dbus-service[155025]:     assert_status(rsp)
+Nov 22 11:21:35 laptop dbus-service[155025]:     ~~~~~~~~~~~~~^^^^^
+Nov 22 11:21:35 laptop dbus-service[155025]:   File "/usr/lib/python3.14/site-packages/validitysensor/util.py", line 12, in assert_status
+Nov 22 11:21:35 laptop dbus-service[155025]:     raise Exception('Failed: %04x' % s)
+Nov 22 11:21:35 laptop dbus-service[155025]: Exception: Failed: 0401
+Nov 22 11:21:35 laptop systemd[1]: python3-validity.service: Main process exited, code=exited, status=1/FAILURE
+Nov 22 11:21:35 laptop systemd[1]: python3-validity.service: Failed with result 'exit-code'.
+=== fprintd-list ===
+No devices found

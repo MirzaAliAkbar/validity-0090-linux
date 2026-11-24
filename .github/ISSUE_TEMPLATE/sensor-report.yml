@@ -1,0 +1,62 @@
+name: Sensor report
+description: Report success or failure on a specific laptop model
+title: "[Report] <laptop model>"
+labels: ["report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for testing. This sensor shares an ID across many laptops, and
+        reports from different models are the most useful data this project can
+        collect.
+  - type: input
+    id: model
+    attributes:
+      label: Laptop model
+      placeholder: ThinkPad T480s
+    validations:
+      required: true
+  - type: input
+    id: distro
+    attributes:
+      label: Distribution and kernel
+      placeholder: Omarchy on Arch, 6.17.8-arch1-1
+    validations:
+      required: true
+  - type: dropdown
+    id: outcome
+    attributes:
+      label: Outcome
+      options:
+        - Enrollment works
+        - Driver loads but enrollment fails
+        - Repair ran but fprintd still reports no devices
+        - Sensor not detected at all
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: What you ran
+      description: Include the commands and the result of each step.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: |
+        Attach the repair log and the fprintd journal.
+        Run: `journalctl -u fprintd -n 100 --no-pager`
+      render: shell
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I confirmed the sensor is 138a:0090 with `lsusb`
+          required: true
+        - label: I removed any other fingerprint stack before testing
+          required: true

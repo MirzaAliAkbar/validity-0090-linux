@@ -1,0 +1,84 @@
+17:44:40 === stopping driver stack ===
+17:44:41 === power-cycling /sys/bus/usb/devices/1-0:1.0/usb1-port9 ===
+17:44:45   /sys/bus/usb/devices/1-9 (devnum 32, power=on)
+17:44:45 === probing partition table ===
+17:44:45   3e -> 0000 (len 148)
+17:44:45     id=1   type=4   access=7     off=0x001000 size=0x001000
+17:44:45     id=2   type=1   access=2     off=0x002000 size=0x03e000
+17:44:45     id=5   type=5   access=3     off=0x040000 size=0x008000
+17:44:45     id=6   type=6   access=3     off=0x048000 size=0x008000
+17:44:45     id=4   type=3   access=5     off=0x050000 size=0x030000
+17:44:45     id=228 type=79  access=32890 off=0x947713d6 size=0xd0b530d3
+17:44:45     id=155 type=228 access=43963 off=0x8f383657 size=0x7a232785
+17:44:45     id=245 type=238 access=42343 off=0x8a241ea7 size=0xff3a6b42
+17:44:45     id=179 type=123 access=9186  off=0x811b7b31 size=0x284f367e
+17:44:45     id=172 type=44  access=49160 off=0xfa43bf0a size=0xa8a52a5
+17:44:45     id=66  type=201 access=55469 off=0xcc7cbd0b size=0x2b82141
+17:44:45   layout matches 0090: True
+17:44:45 === starting driver (non-destructive) ===
+17:46:44   driver did not come up (last status: 0406)
+17:46:44   certificate/TLS store is unusable (status 0406); rebuilding the flash
+17:46:44 === preparing to rebuild the flash ===
+17:46:44 === stopping driver stack ===
+17:46:44 cleared restart backoff
+17:46:44 === power-cycling /sys/bus/usb/devices/1-0:1.0/usb1-port9 ===
+17:46:48   /sys/bus/usb/devices/1-9 (devnum 33, power=on)
+17:46:48   === factory reset attempt 1 ===
+17:46:50   cmd 1000 -> 0000 (2 B)
+17:46:50   cmd 0502 -> 0000 (2 B)
+17:46:50   device rebooting after factory reset (expected)
+17:46:54   /sys/bus/usb/devices/1-9 (devnum 34, power=on)
+17:46:54   cmd 3e -> 0000 (16 B)
+17:46:54   pre-format 3e -> 0000
+17:46:54   forcing init_flash() down the rebuild path
+17:46:54   partition_flash(FlashInfo(FlashIcInfo('W25Q80B', 1048576, 0x13, 0xef, 0x40, 0x14, 0x0, 0x1, 0x1000, 0x20, 0x0, 0x4), 0x1000, 0x1, 0x100,)
+17:46:54   cmd 4f00 -> 0000 (298 B)
+17:46:54   cmd 01 -> 0000 (38 B)
+17:46:54   cmd 50 -> 0000 (926 B)
+17:46:54   call_cleanups()
+17:46:54   cmd 1a -> 0000 (2 B)
+17:46:54   tls.open()
+17:46:54   cmd 4400 -> 1603 (66 B)
+17:46:55   cmd 4400 -> 1403 (91 B)
+17:46:55   tls.open ok
+17:46:55   erase_flash(1)
+17:46:55   cmd 1703 -> 1703 (69 B)
+17:46:55   cmd 1703 -> 1703 (69 B)
+17:46:55   cmd 1703 -> 1703 (69 B)
+17:46:55   erase_flash(2)
+17:46:55   cmd 1703 -> 1703 (69 B)
+17:46:56   cmd 1703 -> 1703 (69 B)
+17:46:56   cmd 1703 -> 1703 (69 B)
+17:46:56   erase_flash(5)
+17:46:56   cmd 1703 -> 1703 (69 B)
+17:46:56   cmd 1703 -> 1703 (69 B)
+17:46:56   cmd 1703 -> 1703 (69 B)
+17:46:56   erase_flash(6)
+17:46:56   cmd 1703 -> 1703 (69 B)
+17:46:56   cmd 1703 -> 1703 (69 B)
+17:46:56   cmd 1703 -> 1703 (69 B)
+17:46:56   erase_flash(4)
+17:46:56   cmd 1703 -> 1703 (69 B)
+17:46:57   cmd 1703 -> 1703 (69 B)
+17:46:57   cmd 1703 -> 1703 (69 B)
+17:46:57   write_flash(1, 0)
+17:46:57   cmd 1703 -> 1703 (69 B)
+17:46:57   cmd 1703 -> 1703 (69 B)
+17:46:57   cmd 1703 -> 1703 (69 B)
+17:46:57   cmd 1703 -> 1703 (69 B)
+17:46:57 FORMAT_OK: sensor rebooted after the rebuild
+17:46:57 === verifying rebuilt table ===
+17:46:59   3e -> 0000 (len 76)
+17:46:59     id=1   type=4   access=7     off=0x001000 size=0x001000
+17:46:59     id=2   type=1   access=2     off=0x002000 size=0x03e000
+17:46:59     id=5   type=5   access=3     off=0x040000 size=0x008000
+17:46:59     id=6   type=6   access=3     off=0x048000 size=0x008000
+17:46:59     id=4   type=3   access=5     off=0x050000 size=0x030000
+17:46:59   layout matches 0090: True
+17:46:59 === starting driver ===
+17:47:13 === fprintd-list ===
+17:47:13 found 1 devices
+Device at /net/reactivated/Fprint/Device/0
+Using device /net/reactivated/Fprint/Device/0
+User <you> has no fingers enrolled for DBus driver.
+17:47:13 RESULT: sensor rebuilt and driver is up; enrollment is available

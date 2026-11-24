@@ -1,0 +1,4 @@
+# Keep the Validity 138a:0090 fingerprint sensor powered at all times.
+# Without this the USB device autosuspends (~2s) between touches and the
+# second enrollment touch fails with "Enrollment stopped".
+ACTION=="add|change", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="138a", ATTR{idProduct}=="0090", ATTR{power/control}="on"
