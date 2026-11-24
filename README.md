@@ -41,6 +41,38 @@ the sensor ends up in the state the driver expects. It reads the partition
 table first and only rebuilds when the table is missing, corrupt, or the
 certificate store is unusable.
 
+## Supported models
+
+The `138a:0090` is the fingerprint reader used across the 2016 ThinkPad
+generation. The system database calls it the `VFS7500 Touch Fingerprint
+Sensor`. It is a press-type sensor with five enrollment stages. The same USB
+ID appears in several models, so the fix works the same way on each of them.
+
+| Model | Status |
+| --- | --- |
+| ThinkPad T460s (`20FAS5PA00`) | Confirmed working. This repo was built on it. |
+| ThinkPad T460, T460p, T560 | Expected to work. Same sensor generation. |
+| ThinkPad X260, X1 Carbon 4th Gen | Expected to work. Same sensor generation. |
+| ThinkPad P50s, L460, L560, Yoga 460 | Expected to work. Same sensor generation. |
+| Any other laptop with `138a:0090` | Try it, then open a report. |
+
+"Expected" means the machine ships the same sensor and the same driver path,
+but nobody has posted a log from it here yet. Confirm your own machine before
+you rely on the table:
+
+```bash
+lsusb | grep 138a
+```
+
+You want `138a:0090`. A different product ID such as `138a:0097` uses the same
+driver family but a different flash layout, so the repair script does not
+handle it.
+
+If your model is missing, run the setup and open a
+[sensor report](.github/ISSUE_TEMPLATE/sensor-report.yml). The template asks
+for the model, the distro, and the log. Reports are how the table gets filled
+in.
+
 ## Requirements
 
 - Arch Linux or an Arch-based distribution such as Omarchy
