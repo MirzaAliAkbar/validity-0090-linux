@@ -209,7 +209,7 @@ because the table can persist until the port loses power.
   `vendor/validitysensor` so the script works without that package. It is
   vendored at version 0.15 under its MIT license.
 - The USB port lookup assumes the usual `/sys/bus/usb/devices/<bus>-0:1.0/`
-  layout. It works on the ThinkPad this was developed on. If your machine
+  layout. It works on the ThinkPad where this was developed. If your machine
   differs, `recover.sh` prints the path it tries.
 - Enrollment quality depends on the sensor and finger placement. If
   enrollment fails partway, run `recover.sh` and try again with a dry finger.
