@@ -59,7 +59,7 @@ lsusb | grep 138a
 ## Install
 
 ```bash
-git clone https://github.com/<your-user>/validity-0090-linux.git
+git clone https://github.com/MirzaAliAkbar/validity-0090-linux.git
 cd validity-0090-linux
 ./scripts/install-driver.sh
 ```
